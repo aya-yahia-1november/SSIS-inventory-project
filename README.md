@@ -66,30 +66,6 @@ A summary table used for reporting purposes.
 
 ---
 
-## 🖼️ Visual Overview
-
-You can view the animated data flow here:  
-![ETL Data Flow Animation](./A_flowchart_animation_in_SSIS_(SQL_Server_Integrat.png)
-
-📁 Inventory_ETL_Project
-│
-├── 📁 SSIS_Packages
-│ └── Inventory_ETL.dtsx
-│
-├── 📁 SQL_Scripts
-│ └── create_tables.sql
-│
-├── 📁 Resources
-│ └── sample_excel_data.xlsx
-│
-├── 📁 Screenshots
-│ └── dataflow_overview.png
-│
-└── README.md
-
-
----
-
 ## 🔗 Connect with Me
 
 - 🔗 [LinkedIn](https://www.linkedin.com/in/aya-yahia-37522a217)
