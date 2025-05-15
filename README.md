@@ -1,41 +1,98 @@
-📦 Inventory Management ETL Project with SSIS
-This project demonstrates the design and implementation of a complete ETL pipeline using SQL Server Integration Services (SSIS) to manage inventory data from Excel files and store it in a structured Data Warehouse format. The solution includes conditional data routing, incremental loading, revenue classification, and a summary reporting table.
+# 📦 Inventory Management ETL Project using SSIS
 
-🛠️ Technologies Used
-Microsoft SQL Server & SSMS
+This project demonstrates the end-to-end design of an ETL (Extract, Transform, Load) pipeline using **SQL Server Integration Services (SSIS)** to manage and process inventory data. It involves importing data from Excel files, transforming and classifying records based on business logic, and loading the results into a structured **Data Warehouse** schema for reporting and analysis.
 
-SSIS (SQL Server Integration Services)
+---
 
-T-SQL
+## 🛠️ Technologies Used
 
-Excel
+- **Microsoft SQL Server**  
+- **SQL Server Management Studio (SSMS)**  
+- **SSIS (SQL Server Integration Services)**  
+- **T-SQL (Transact-SQL)**  
+- **Microsoft Excel**
 
-📑 Project Objectives
-Extract inventory data from Excel files.
+---
 
-Transform the data: calculate derived metrics and handle revenue segmentation.
+## 🎯 Project Objectives
 
-Load data into multiple SQL Server tables:
+- 📥 Extract inventory data from Excel sources.
+- 🔄 Transform the data by:
+  - Adding derived columns (e.g., total stock, unsold value).
+  - Classifying products based on revenue thresholds.
+  - Adding timestamps for ETL tracking.
+- 📤 Load transformed data into multiple destination tables:
+  - `Product_inventory` – Raw data from Excel
+  - `HighRevenue` – Filtered records based on high revenue
+  - `DW_inventory` – Fact table with historical, incremental loads
+  - `DW_Inventory_Summary` – Aggregated snapshot for reporting
+- 🧠 Apply **incremental loading** to avoid duplicate entries in the data warehouse using Lookup transformations in SSIS.
 
-Product_inventory
+---
 
-HighRevenue
+## 🧾 SQL Tables Overview
 
-DW_inventory (Data Warehouse)
+### `Product_inventory`
+Stores the raw inventory data extracted directly from Excel files, including stock levels, cost, and revenue calculations.
 
-DW_Inventory_Summary
+### `HighRevenue`
+Contains only high-revenue records, filtered using a conditional split transformation during the ETL process.
 
-Apply incremental loading to avoid duplicate insertions into DW_inventory.
+### `DW_inventory`
+A fact table in the data warehouse that holds historical inventory data.  
+- **Primary Key**: `Product ID`  
+- Includes a timestamp for each ETL load.  
+- Incremental loading prevents duplicate records.
 
-📊 SQL Tables Overview
-Product_inventory
-Stores the raw inventory data extracted from Excel.
+### `DW_Inventory_Summary`
+A summary table used for reporting purposes.  
+- Aggregates key metrics such as:
+  - Total units sold
+  - Total revenue
+  - Total unsold value  
+- Includes a snapshot timestamp for point-in-time analysis.
 
-HighRevenue
-Stores records classified as having high revenue, identified during transformation.
+---
 
-DW_inventory
-A data warehouse table with a primary key on Product ID. Stores historical data with timestamps. Incremental loading logic ensures no duplicate entries.
+## 📈 ETL Flow Overview
 
-DW_Inventory_Summary
-Snapshot table showing aggregated metrics like total units sold, total revenue, and unsold value per product.
+1. **Extract**: Load data from Excel using the Excel Source component.
+2. **Transform**: Use Derived Column and Conditional Split for business rules (e.g., revenue classification).
+3. **Load**: Store results in appropriate destinations:
+   - Raw table
+   - Segmented high-revenue table
+   - Data warehouse table
+   - Summary snapshot table
+
+---
+
+## 🖼️ Visual Overview
+
+You can view the animated data flow here:  
+![ETL Data Flow Animation](./A_flowchart_animation_in_SSIS_(SQL_Server_Integrat.png)
+
+📁 Inventory_ETL_Project
+│
+├── 📁 SSIS_Packages
+│ └── Inventory_ETL.dtsx
+│
+├── 📁 SQL_Scripts
+│ └── create_tables.sql
+│
+├── 📁 Resources
+│ └── sample_excel_data.xlsx
+│
+├── 📁 Screenshots
+│ └── dataflow_overview.png
+│
+└── README.md
+
+
+---
+
+## 🔗 Connect with Me
+
+- 🔗 [LinkedIn](https://www.linkedin.com/in/aya-yahia-37522a217)
+- 💻 [GitHub](https://github.com/aya-yahia-1november)
+
+
